@@ -15,7 +15,7 @@ for i in range(1017):
     for j in range(1017):
         D[i, j] = D[i, j] + lam*np.abs(i - j)
 
-D = D[::4, ::4];
+D = D[::4, ::4]
 
 
 skeleton_protein = gd.RipsComplex(
