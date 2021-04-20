@@ -13,13 +13,15 @@ def BarcodeAndSimplex(D, save_path):
 
     skeleton_protein = gd.RipsComplex(
         distance_matrix=D,
-        max_edge_length=.2
+        max_edge_length=.4
     )
     Rips_simplex_tree_fMRI = skeleton_protein.create_simplex_tree(max_dimension=2)
 
     print("Simplex Created!")
 
     BarCodes_Rips0 = Rips_simplex_tree_fMRI.persistence()
+    for i in BarCodes_Rips0:
+        print(i)
 
     print("barcode created")
     filtration = Rips_simplex_tree_fMRI.get_filtration()
@@ -64,7 +66,7 @@ def BarcodeAndSimplex(D, save_path):
                             simplex_component = j[0];
                             death_component = j[1];
                             death_flag = True;
-        if 'simplex_component' in globals():
+        if 'simplex_component' in locals():
             Desired.append((dim, b, d, simplex_component, death_component))
             del simplex_component
         else:
@@ -80,7 +82,7 @@ def BarcodeAndSimplex(D, save_path):
 
 
 directory = 'distanceMatrices/sub'
-for i in range(3, 21):
+for i in range(1, 21):
     if i!= 5 and i!= 11:
         if i < 10:
             sub_id = '0' + str(i)
